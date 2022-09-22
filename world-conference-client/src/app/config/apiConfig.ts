@@ -7,6 +7,8 @@ export const ApiConfig = {
     ConferenceApiConfig: {
         getCountry:`/api/Conference/getCountry`,
         getCity:`/api/Conference/getCity`,
-        getUser:`/api/Conference/getUser`,                
+        getUser:`/api/Conference/getUser`,  
+        searchCompany:`/api/Conference/SearchCompany`,
+        getAllCompaniesCount:`/api/Conference/getAllCompaniesCount`,            
     }
 };

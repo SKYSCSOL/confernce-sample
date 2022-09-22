@@ -1,5 +1,8 @@
 export class Company {
+  companyName!:string;
+  cityName!: string;
   companyID!: number;
+  userName!:string;
   name!: string;
   theID!: number;
   address!: string;

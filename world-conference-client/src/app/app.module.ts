@@ -12,6 +12,7 @@ import {MatSidenavModule} from '@angular/material/sidenav'
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import { MatSelectFilterModule } from 'mat-select-filter';
+import { WorldConferencePaginationService } from './services/world-conference-pagination.service';
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import { MatSelectFilterModule } from 'mat-select-filter';
     MatListModule,
     MatSelectFilterModule
   ],
-  providers: [],
+  providers: [WorldConferencePaginationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

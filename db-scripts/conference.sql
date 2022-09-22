@@ -1,6 +1,88 @@
+USE [master]
+GO
+/****** Object:  Database [conference]    Script Date: 22-09-2022 17:13:31 ******/
+CREATE DATABASE [conference]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'conference', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\conference_Primary.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'conference_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\conference_Primary.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT
+GO
+ALTER DATABASE [conference] SET COMPATIBILITY_LEVEL = 150
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [conference].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [conference] SET ANSI_NULL_DEFAULT ON 
+GO
+ALTER DATABASE [conference] SET ANSI_NULLS ON 
+GO
+ALTER DATABASE [conference] SET ANSI_PADDING ON 
+GO
+ALTER DATABASE [conference] SET ANSI_WARNINGS ON 
+GO
+ALTER DATABASE [conference] SET ARITHABORT ON 
+GO
+ALTER DATABASE [conference] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [conference] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [conference] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [conference] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [conference] SET CURSOR_DEFAULT  LOCAL 
+GO
+ALTER DATABASE [conference] SET CONCAT_NULL_YIELDS_NULL ON 
+GO
+ALTER DATABASE [conference] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [conference] SET QUOTED_IDENTIFIER ON 
+GO
+ALTER DATABASE [conference] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [conference] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [conference] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [conference] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [conference] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [conference] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [conference] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [conference] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [conference] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [conference] SET RECOVERY FULL 
+GO
+ALTER DATABASE [conference] SET  MULTI_USER 
+GO
+ALTER DATABASE [conference] SET PAGE_VERIFY NONE  
+GO
+ALTER DATABASE [conference] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [conference] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [conference] SET TARGET_RECOVERY_TIME = 0 SECONDS 
+GO
+ALTER DATABASE [conference] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [conference] SET ACCELERATED_DATABASE_RECOVERY = OFF  
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'conference', N'ON'
+GO
+ALTER DATABASE [conference] SET QUERY_STORE = OFF
+GO
 USE [conference]
 GO
-/****** Object:  Table [dbo].[City]    Script Date: 22-09-2022 16:26:20 ******/
+/****** Object:  Table [dbo].[City]    Script Date: 22-09-2022 17:13:33 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -16,7 +98,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Company]    Script Date: 22-09-2022 16:26:20 ******/
+/****** Object:  Table [dbo].[Company]    Script Date: 22-09-2022 17:13:33 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -42,7 +124,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Country]    Script Date: 22-09-2022 16:26:20 ******/
+/****** Object:  Table [dbo].[Country]    Script Date: 22-09-2022 17:13:33 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -58,7 +140,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[User]    Script Date: 22-09-2022 16:26:20 ******/
+/****** Object:  Table [dbo].[User]    Script Date: 22-09-2022 17:13:33 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -84,7 +166,7 @@ PRIMARY KEY CLUSTERED
 GO
 SET IDENTITY_INSERT [dbo].[City] ON 
 GO
-INSERT [dbo].[City] ([Id], [CountryCode], [CityCode], [CityName]) VALUES (1, N'IN', N'BOM', N'Mumbai')
+INSERT [dbo].[City] ([Id], [CountryCode], [CityCode], [CityName]) VALUES (1, N'IN        ', N'BOM       ', N'Mumbai    ')
 GO
 SET IDENTITY_INSERT [dbo].[City] OFF
 GO
@@ -98,9 +180,9 @@ SET IDENTITY_INSERT [dbo].[Company] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Country] ON 
 GO
-INSERT [dbo].[Country] ([Id], [RegionCode], [CountryCode], [CountryName]) VALUES (1, N'AS', N'IN', N'INDIA')
+INSERT [dbo].[Country] ([Id], [RegionCode], [CountryCode], [CountryName]) VALUES (1, N'AS        ', N'IN        ', N'INDIA     ')
 GO
-INSERT [dbo].[Country] ([Id], [RegionCode], [CountryCode], [CountryName]) VALUES (3, N'AS', N'NP', N'NEPAL')
+INSERT [dbo].[Country] ([Id], [RegionCode], [CountryCode], [CountryName]) VALUES (3, N'AS        ', N'NP        ', N'NEPAL     ')
 GO
 SET IDENTITY_INSERT [dbo].[Country] OFF
 GO
@@ -114,7 +196,7 @@ SET IDENTITY_INSERT [dbo].[User] OFF
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [UQ__City__B488218C253B3BE4]    Script Date: 22-09-2022 16:26:21 ******/
+/****** Object:  Index [UQ__City__B488218C253B3BE4]    Script Date: 22-09-2022 17:13:33 ******/
 ALTER TABLE [dbo].[City] ADD UNIQUE NONCLUSTERED 
 (
 	[CityCode] ASC
@@ -122,7 +204,7 @@ ALTER TABLE [dbo].[City] ADD UNIQUE NONCLUSTERED
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [UQ__Country__5D9B0D2CE900573A]    Script Date: 22-09-2022 16:26:21 ******/
+/****** Object:  Index [UQ__Country__5D9B0D2CE900573A]    Script Date: 22-09-2022 17:13:33 ******/
 ALTER TABLE [dbo].[Country] ADD UNIQUE NONCLUSTERED 
 (
 	[CountryCode] ASC
@@ -151,4 +233,101 @@ ALTER TABLE [dbo].[User]  WITH CHECK ADD  CONSTRAINT [FK_User_Company] FOREIGN K
 REFERENCES [dbo].[Company] ([CompanyID])
 GO
 ALTER TABLE [dbo].[User] CHECK CONSTRAINT [FK_User_Company]
+GO
+/****** Object:  StoredProcedure [dbo].[CompanySearch]    Script Date: 22-09-2022 17:13:33 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- exec CompanySearch  1,2, null, 'IN', 'Mumbai', null
+-- =============================================
+CREATE PROCEDURE [dbo].[CompanySearch]
+@PageNo INT = 0,  --@Page int,
+@PageSize INT =0, --@RecsPerPage  int,
+@SortOrder VARCHAR(200)= '',
+@CountryCode NVARCHAR(100) = '',
+@CityName NVARCHAR(100) = '',
+@UserName NVARCHAR(1000) = ''
+AS
+  BEGIN
+	-- The number of rows affected by the different commands
+	-- does not interest the application, so turn NOCOUNT ON
+SET NOCOUNT ON
+
+
+-- Determine the first record and last record 
+DECLARE @FirstRec int, @LastRec int
+
+SELECT @FirstRec = (@PageNo - 1) * @PageSize
+SELECT @LastRec = (@PageNo * @PageSize + 1);
+
+BEGIN TRY
+
+WITH TempResult as
+(
+SELECT ROW_NUMBER() OVER(ORDER BY Company.CompanyID DESC) as RowNum,
+LTRIM(RTRIM([User].[Name])) AS UserName, LTRIM(RTRIM(Country.CountryCode)) AS CountryCode, LTRIM(RTRIM(City.CityName)) AS CityName, LTRIM(RTRIM([User].EmailId)) AS EmailId, LTRIM(RTRIM([User].UserID)) AS UserID, LTRIM(RTRIM([Company].[Name])) AS CompanyName
+FROM            City INNER JOIN
+                         Company ON City.CityCode = Company.City INNER JOIN
+                         Country ON City.CountryCode = Country.CountryCode AND Company.Country = Country.CountryCode INNER JOIN
+                         [User] ON Company.CompanyID = [User].CompanyID
+      WHERE
+             [City].[CountryCode] LIKE '%'+ ISNULL(@CountryCode, '') + '%'
+              AND[City].[CityName] LIKE '%' + ISNULL(@CityName, '') + '%'
+			  AND [User].[Name] LIKE '%' + ISNULL(@UserName, '') + '%'
+)
+
+SELECT top (@LastRec-1) *
+FROM TempResult
+WHERE RowNum > @FirstRec 
+AND RowNum < @LastRec
+
+-- Turn NOCOUNT back OFF
+SET NOCOUNT OFF
+
+    END TRY
+    BEGIN CATCH
+      RETURN 'Erorr occured in the serch.'
+    END CATCH
+    RETURN 0
+  END
+GO
+/****** Object:  StoredProcedure [dbo].[GetCompaniesCount]    Script Date: 22-09-2022 17:13:33 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[GetCompaniesCount]
+@CountryCode NVARCHAR(100) = '',
+@CityName NVARCHAR(100) = '',
+@UserName NVARCHAR(1000) = ''
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	SELECT COUNT(Company.CompanyID) CompaniesCount
+	FROM            City INNER JOIN
+							 Company ON City.CityCode = Company.City INNER JOIN
+							 Country ON City.CountryCode = Country.CountryCode AND Company.Country = Country.CountryCode INNER JOIN
+							 [User] ON Company.CompanyID = [User].CompanyID
+		  WHERE
+				 [City].[CountryCode] LIKE '%'+ ISNULL(@CountryCode, '') + '%'
+				  AND[City].[CityName] LIKE '%' + ISNULL(@CityName, '') + '%'
+				  AND [User].[Name] LIKE '%' + ISNULL(@UserName, '') + '%'
+END
+GO
+USE [master]
+GO
+ALTER DATABASE [conference] SET  READ_WRITE 
 GO

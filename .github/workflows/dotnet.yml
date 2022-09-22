@@ -43,7 +43,7 @@ jobs:
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"SKYSCSOL_confernce-sample" /o:"skysc-sq-integration" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
-          dotnet restore ./world-conference-api
-          dotnet build --no-restore ./world-conference-api
-          dotnet test --no-build --verbosity normal ./world-conference-api
+          dotnet restore ./world-conference-server/world-conference-api
+          dotnet build --no-restore ./world-conference-server/world-conference-api
+          dotnet test --no-build --verbosity normal ./world-conference-server/world-conference-api
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"

@@ -1,0 +1,35 @@
+<div style="padding-left: 5px;">
+  <br />
+  <mat-form-field>
+    Slect Country
+    <mat-select name="country" [(ngModel)]="country_name">
+      <mat-option *ngFor="let countries of countryList" [value]="countries.id">
+        {{countries.countryName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+<br/>
+<br/>
+<mat-form-field>
+    Slect City
+    <mat-select name="city" [(ngModel)]="city_name">
+      <mat-option *ngFor="let cities  of cityList" [value]="cities.id">
+        {{cities.cityName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <br/>
+<br/>
+<mat-form-field>
+    Slect User
+    <mat-select #select multiple name="user" [(ngModel)]="user_name" (selectionChange)="searchDelegate()">
+      <mat-select-filter [placeholder]="'Search..'" *ngIf="select.focused" [array]="userList" (filteredReturn)="userList = $event"></mat-select-filter>
+
+      <mat-option *ngFor="let users  of userList" [value]="users.userID">
+        {{users.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+

@@ -13,12 +13,12 @@ namespace world_conference_api.DataAccess
 {
     public class DataProvider : IDataProvider
     {
-        private readonly IConfiguration _configuration;       
+        private readonly IConfiguration _configuration;
         private readonly DataContext _context;
 
         public DataProvider(DataContext context, IConfiguration configuration)
         {
-            _configuration = configuration;           
+            _configuration = configuration;
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
@@ -34,6 +34,21 @@ namespace world_conference_api.DataAccess
 
             }
             return cities;
+        }
+
+        public object getAllCompaniesCount(string countryCode, string cityName, string userName)
+        {
+            DynamicParameters searchCompanyParameters = new DynamicParameters();
+
+            using (IDbConnection databaseConnection = new SqlConnection(connectionString: _configuration["ConferenceConnection"]))
+            {
+                searchCompanyParameters.Add(name: SqlParameterConstant.Country_Code, value: countryCode, dbType: DbType.String, direction: ParameterDirection.Input);
+                searchCompanyParameters.Add(name: SqlParameterConstant.City_Name, value: cityName, dbType: DbType.String, direction: ParameterDirection.Input);
+                searchCompanyParameters.Add(name: SqlParameterConstant.User_Name, value: userName, dbType: DbType.String, direction: ParameterDirection.Input);
+                var companyCount = databaseConnection.QuerySingle(SqlStoredProcedureConstant.COMPANY_COUNT, searchCompanyParameters, commandType: CommandType.StoredProcedure);
+                return companyCount;
+
+            }
         }
 
         public IEnumerable<Country> GetAllCountry()
@@ -66,7 +81,7 @@ namespace world_conference_api.DataAccess
         }
 
 
-        public async Task<IEnumerable<SearchCompany>> SearchCompaniesAsync(int pageNo, int pageSize, string countryCode, string cityName, string userName, string sortOrder)
+        public async Task<IEnumerable<SearchCompany>> SearchCompaniesAsync(int pageNo, int pageSize, string countryCode, string cityName, string userName)
         {
             DynamicParameters searchCompanyParameters = new DynamicParameters();
 

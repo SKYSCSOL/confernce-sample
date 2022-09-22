@@ -1,8 +1,9 @@
-﻿-- =============================================
--- Author:		SKY
+﻿
+-- =============================================
+-- Author:		SANJAY KUMAR
 -- Create date: 21-Sep-2022
 -- Description: Company Search
--- exec CompanySearch  2,1, null, 'IN', 'Mumbai', null
+-- exec CompanySearch  1,2, null, 'IN', 'Mumbai', null
 -- =============================================
 CREATE PROCEDURE [dbo].[CompanySearch]
 @PageNo INT = 0,  --@Page int,
@@ -28,7 +29,7 @@ BEGIN TRY
 
 WITH TempResult as
 (
-SELECT ROW_NUMBER() OVER(ORDER BY [User].UserID DESC) as RowNum,
+SELECT ROW_NUMBER() OVER(ORDER BY Company.CompanyID DESC) as RowNum,
 LTRIM(RTRIM([User].[Name])) AS UserName, LTRIM(RTRIM(Country.CountryCode)) AS CountryCode, LTRIM(RTRIM(City.CityName)) AS CityName, LTRIM(RTRIM([User].EmailId)) AS EmailId, LTRIM(RTRIM([User].UserID)) AS UserID, LTRIM(RTRIM([Company].[Name])) AS CompanyName
 FROM            City INNER JOIN
                          Company ON City.CityCode = Company.City INNER JOIN

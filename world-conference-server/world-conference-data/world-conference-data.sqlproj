@@ -6,7 +6,7 @@
     <Name>world_conference_data</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{314b41dd-0991-4e7f-afb0-edb6377ce348}</ProjectGuid>
+    <ProjectGuid>{ed93fa42-9ae2-4a28-b4ac-64dd05eb9c75}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
@@ -58,5 +58,12 @@
     <Folder Include="Properties" />
     <Folder Include="DomainData" />
     <Folder Include="TransactionalData" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DomainData\City.sql" />
+    <None Include="DomainData\Company.sql" />
+    <None Include="DomainData\Country.sql" />
+    <None Include="DomainData\User.sql" />
+    <None Include="world-conference-data.publish.xml" />
   </ItemGroup>
 </Project>

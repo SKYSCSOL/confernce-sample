@@ -8,9 +8,9 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-<br/>
-<br/>
-<mat-form-field>
+  <br />
+  <br />
+  <mat-form-field>
     Slect City
     <mat-select name="city" [(ngModel)]="city_name">
       <mat-option *ngFor="let cities  of cityList" [value]="cities.id">
@@ -19,12 +19,13 @@
     </mat-select>
   </mat-form-field>
 
-  <br/>
-<br/>
-<mat-form-field>
+  <br />
+  <br />
+  <mat-form-field>
     Slect User
     <mat-select #select multiple name="user" [(ngModel)]="user_name" (selectionChange)="searchDelegate()">
-      <mat-select-filter [placeholder]="'Search..'" *ngIf="select.focused" [array]="userList" (filteredReturn)="userList = $event"></mat-select-filter>
+      <mat-select-filter [placeholder]="'Search..'" *ngIf="select.focused" [array]="userList"
+        (filteredReturn)="userList = $event"></mat-select-filter>
 
       <mat-option *ngFor="let users  of userList" [value]="users.userID">
         {{users.name}}
@@ -33,3 +34,49 @@
   </mat-form-field>
 </div>
 
+<div class="row">
+  <div class="col-12 col-md-12">
+    <div class="card">     
+      <div class="card-body position-relative">
+        <div class="table-responsive cnstr-record companie-tbl">
+          <table class="table table-bordered heading-hvr">
+            <thead>
+              <tr>
+                <th style="cursor: pointer;" width="200">Company</th>
+                <th style="cursor: pointer;" width="200">Country</th>
+                <th style="cursor: pointer;" width="200">City</th>
+                <th style="cursor: pointer;" width="400">Delegate Name
+                </th>               
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of companies">
+                <td width="200" style="text-align: center">
+                  {{item.companyName}}
+                </td>
+                <td width="200" style="text-align: center">{{item.countryCode}}</td>
+                <td width="200" style="text-align: center">{{item.cityName}}</td>
+                <td width="400" style="text-align: center">{{item.userName}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Code by pagination -->
+        <div class="container mw-100">
+          <div class="row">
+            <div class="col-md-3"> </div>
+            <div class="col-md-6">             
+              <!-- companies !=0 -->
+              <ul class="pagination justify-content-center">
+                <li *ngFor="let page of pageField;let i=index" class="page-item">
+                  <a (click)="showCompaniesByPageNumber(page,i)" [ngClass]="pageNumber[i] ? 'pageColor':'page-link'"
+                    style=" margin-right: 5px;;margin-top: 5px">{{page}}</a>
+                </li>
+              </ul>  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

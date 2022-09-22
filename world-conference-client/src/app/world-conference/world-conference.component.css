@@ -1,7 +1,119 @@
-.mat-filter{
+.mat-filter {
   background-color: purple !important;
 }
 
 .mat-filter-input {
   border: 1px solid black !important
 }
+
+@charset "utf-8";
+
+/* CSS Document */
+@media all {
+  * {
+    padding: 0px;
+    margin: 0px;
+  }
+
+  div {
+    vertical-align: top;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    overflow: auto !important;
+    width: 100% !important;
+  }
+
+  html,
+  body {
+    background-color: #e4e5e6;
+  }
+
+  html {
+    position: relative;
+    min-height: 100%;
+  }
+
+  .card {
+    border-radius: 4px;
+  }
+
+  .card-header:first-child {
+    border-radius: 4px 4px 0px 0px;
+  }
+  
+  .page-item:first-child .page-link {
+
+    margin-left: 0;
+
+    border-top-left-radius: .25rem;
+
+    border-bottom-left-radius: .25rem;
+
+  }
+
+  .pageColor {
+
+    position: relative;
+
+    display: block;
+
+    padding: .5rem .75rem;
+
+    margin-left: -1px;
+
+    line-height: 1.25;
+
+    color: white !important;
+
+    background-color: black !important;
+
+    border: 1px solid #dee2e6;
+
+  }
+
+  .notAllowed {
+
+    position: relative;
+
+    display: block;
+
+    padding: .5rem .75rem;
+
+    margin-left: -1px;
+
+    line-height: 1.25;
+
+    color: #007bff;
+
+    background-color: #fff;
+
+    border: 1px solid #dee2e6;
+
+    cursor: not-allowed;
+
+  }
+
+  .page-link {
+
+    position: relative;
+
+    display: block;
+
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+  }
+} 

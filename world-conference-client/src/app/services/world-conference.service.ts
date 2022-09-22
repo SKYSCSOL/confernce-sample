@@ -44,4 +44,13 @@ export class WorldConferenceService {
       );
   }
 
+  searchCompanies(pageNo:number,pageSize: number,countryCode: string, cityName: string, userName: string): Observable<any> {       
+        let parameters= '?pageNo=' + pageNo+'&pageSize='+pageSize+'&countryCode='+countryCode+'&cityName='+cityName+'&userName='+userName;
+        return this.http.get(`${this.rootUrl}${this.conferenceAPIUrl.searchCompany}` + parameters)
+      }
+
+      getAllCompaniesCount(countryCode: string, cityName: string, userName: string): Observable<any> {     
+        let parameters= '?countryCode='+countryCode+'&cityName='+cityName+'&userName='+userName;       
+            return this.http.get(`${this.rootUrl}${this.conferenceAPIUrl.getAllCompaniesCount}` + parameters);
+          }
 }

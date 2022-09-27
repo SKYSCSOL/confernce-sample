@@ -12,5 +12,6 @@ namespace world_conference_api.DataAccess
         IEnumerable<User> GetAllUser();
         Task<IEnumerable<SearchCompany>> SearchCompaniesAsync(int pageNo, int pageSize, string countryCode, string cityName, string userName);
         object getAllCompaniesCount(string countryCode, string cityName, string userName);
+        Task<IEnumerable<User>> GetAllUserByCompanyName(string companyName);
     }
 }

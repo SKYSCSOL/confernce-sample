@@ -13,12 +13,17 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import { MatSelectFilterModule } from 'mat-select-filter';
 import { WorldConferencePaginationService } from './services/world-conference-pagination.service';
+import { MatTableModule } from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator'; 
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { UserByCompanyComponent } from './user-by-company/user-by-company.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    WorldConferenceComponent
+    WorldConferenceComponent,
+    UserByCompanyComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +35,11 @@ import { WorldConferencePaginationService } from './services/world-conference-pa
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatSelectFilterModule
+    MatSelectFilterModule,
+    MatTableModule,
+    MatPaginatorModule,
+    NgxMatSelectSearchModule,
+    
   ],
   providers: [WorldConferencePaginationService],
   bootstrap: [AppComponent]

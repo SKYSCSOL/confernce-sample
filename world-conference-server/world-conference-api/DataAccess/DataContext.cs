@@ -19,5 +19,7 @@ namespace world_conference_api.DataAccess
 
         public DbSet<User> User { get; set; } = null!;
 
+        public DbSet<Company> Company { get; set; } = null!;
+
     }
 }

@@ -1,9 +1,9 @@
 ﻿
 -- =============================================
--- Author:		SANJAY KUMAR
--- Create date: 21-Sep-2022
--- Description: Company Search
--- exec CompanySearch  1,2, null, 'IN', 'Mumbai', null
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- exec CompanySearch  1,5, null, 'IN', 'Mumbai', null
 -- =============================================
 CREATE PROCEDURE [dbo].[CompanySearch]
 @PageNo INT = 0,  --@Page int,
@@ -29,16 +29,21 @@ BEGIN TRY
 
 WITH TempResult as
 (
-SELECT ROW_NUMBER() OVER(ORDER BY Company.CompanyID DESC) as RowNum,
-LTRIM(RTRIM([User].[Name])) AS UserName, LTRIM(RTRIM(Country.CountryCode)) AS CountryCode, LTRIM(RTRIM(City.CityName)) AS CityName, LTRIM(RTRIM([User].EmailId)) AS EmailId, LTRIM(RTRIM([User].UserID)) AS UserID, LTRIM(RTRIM([Company].[Name])) AS CompanyName
+SELECT  DISTINCT
+Company.CompanyID  as RowNum,
+LTRIM(RTRIM(Country.CountryCode)) AS CountryCode, LTRIM(RTRIM(City.CityName)) AS CityName, 
+LTRIM(RTRIM([Company].[Name])) AS CompanyName
 FROM            City INNER JOIN
                          Company ON City.CityCode = Company.City INNER JOIN
                          Country ON City.CountryCode = Country.CountryCode AND Company.Country = Country.CountryCode INNER JOIN
                          [User] ON Company.CompanyID = [User].CompanyID
+
       WHERE
              [City].[CountryCode] LIKE '%'+ ISNULL(@CountryCode, '') + '%'
               AND[City].[CityName] LIKE '%' + ISNULL(@CityName, '') + '%'
 			  AND [User].[Name] LIKE '%' + ISNULL(@UserName, '') + '%'
+			  group by Company.CompanyID,[Company].[Name],[User].[Name],Country.CountryCode,City.CityName,
+						 [User].EmailId,[User].UserID
 )
 
 SELECT top (@LastRec-1) *

@@ -11,9 +11,5 @@ namespace world_conference_api.Model
         public string UserID { get; set; }
         public string CompanyName { get; set; }
         //public List<User> Users { get; set; } = new List<User>(); //TODO
-    }
-    public class SearchCompanyCount
-    {
-        int CompanyCount { get; set; }
-    }
+    }  
 }

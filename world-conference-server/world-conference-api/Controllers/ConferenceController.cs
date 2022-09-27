@@ -48,5 +48,12 @@ namespace world_conference_api.Controllers
             var companyDetailsCount = _dataProvider.getAllCompaniesCount(countryCode, cityName, userName);
             return companyDetailsCount;
         }
+
+        [HttpGet("getAllUserByCompanyName")]
+        public async Task<IActionResult> GetAllUserByCompanyName(string companyName)
+        {
+            var companyUsers = await _dataProvider.GetAllUserByCompanyName(companyName);
+            return Ok(companyUsers);
+        }
     }
 }

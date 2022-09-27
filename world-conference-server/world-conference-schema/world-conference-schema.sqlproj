@@ -69,6 +69,7 @@
     <Build Include="dbo\Tables\User.sql" />
     <Build Include="dbo\Stored Procedures\CompanySearch.sql" />
     <Build Include="dbo\Stored Procedures\GetCompaniesCount.sql" />
+    <Build Include="dbo\Stored Procedures\GetUserByCompany.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="world-conference-schema.refactorlog" />

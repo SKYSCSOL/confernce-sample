@@ -29,7 +29,7 @@ namespace world_conference_api.DataAccess
             {
                 cities = _context.City.ToList();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -38,14 +38,14 @@ namespace world_conference_api.DataAccess
 
         public object getAllCompaniesCount(string countryCode, string cityName, string userName)
         {
-            DynamicParameters searchCompanyParameters = new DynamicParameters();
+            DynamicParameters countCompanyParameters = new DynamicParameters();
 
             using (IDbConnection databaseConnection = new SqlConnection(connectionString: _configuration["ConferenceConnection"]))
             {
-                searchCompanyParameters.Add(name: SqlParameterConstant.Country_Code, value: countryCode, dbType: DbType.String, direction: ParameterDirection.Input);
-                searchCompanyParameters.Add(name: SqlParameterConstant.City_Name, value: cityName, dbType: DbType.String, direction: ParameterDirection.Input);
-                searchCompanyParameters.Add(name: SqlParameterConstant.User_Name, value: userName, dbType: DbType.String, direction: ParameterDirection.Input);
-                var companyCount = databaseConnection.QuerySingle(SqlStoredProcedureConstant.COMPANY_COUNT, searchCompanyParameters, commandType: CommandType.StoredProcedure);
+                countCompanyParameters.Add(name: SqlParameterConstant.Country_Code, value: countryCode, dbType: DbType.String, direction: ParameterDirection.Input);
+                countCompanyParameters.Add(name: SqlParameterConstant.City_Name, value: cityName, dbType: DbType.String, direction: ParameterDirection.Input);
+                countCompanyParameters.Add(name: SqlParameterConstant.User_Name, value: userName, dbType: DbType.String, direction: ParameterDirection.Input);
+                var companyCount = databaseConnection.QuerySingle(SqlStoredProcedureConstant.COMPANY_COUNT, countCompanyParameters, commandType: CommandType.StoredProcedure);
                 return companyCount;
 
             }
@@ -80,26 +80,51 @@ namespace world_conference_api.DataAccess
             return users;
         }
 
+        public async Task<IEnumerable<User>> GetAllUserByCompanyName(string companyName)
+        {
+            var companyUsers = new List<User>();
+            try
+            {
+                DynamicParameters companyParameters = new DynamicParameters();
+                using (IDbConnection databaseConnection = new SqlConnection(connectionString: _configuration["ConferenceConnection"]))
+                {
+                    companyParameters.Add(name: SqlParameterConstant.Company_Name, value: companyName, dbType: DbType.String, direction: ParameterDirection.Input);
+                    companyUsers = (List<User>)await databaseConnection.QueryAsync<User>(SqlStoredProcedureConstant.GET_USER_BY_COMPANY, companyParameters, commandType: CommandType.StoredProcedure);
+
+                }
+            }
+            catch (Exception ex)
+            { }
+            return companyUsers;
+
+        }
 
         public async Task<IEnumerable<SearchCompany>> SearchCompaniesAsync(int pageNo, int pageSize, string countryCode, string cityName, string userName)
         {
-            DynamicParameters searchCompanyParameters = new DynamicParameters();
-
-            using (IDbConnection databaseConnection = new SqlConnection(connectionString: _configuration["ConferenceConnection"]))
+            var companies = new List<SearchCompany>();
+            try
             {
-                searchCompanyParameters.Add(name: SqlParameterConstant.Page_No, value: pageNo, dbType: DbType.Int32, direction: ParameterDirection.Input);
+                DynamicParameters searchCompanyParameters = new DynamicParameters();
 
-                searchCompanyParameters.Add(name: SqlParameterConstant.Page_Size, value: pageSize, dbType: DbType.Int32, direction: ParameterDirection.Input);
+                using (IDbConnection databaseConnection = new SqlConnection(connectionString: _configuration["ConferenceConnection"]))
+                {
+                    searchCompanyParameters.Add(name: SqlParameterConstant.Page_No, value: pageNo, dbType: DbType.Int32, direction: ParameterDirection.Input);
 
-                searchCompanyParameters.Add(name: SqlParameterConstant.Country_Code, value: countryCode, dbType: DbType.String, direction: ParameterDirection.Input);
+                    searchCompanyParameters.Add(name: SqlParameterConstant.Page_Size, value: pageSize, dbType: DbType.Int32, direction: ParameterDirection.Input);
 
-                searchCompanyParameters.Add(name: SqlParameterConstant.City_Name, value: cityName, dbType: DbType.String, direction: ParameterDirection.Input);
+                    searchCompanyParameters.Add(name: SqlParameterConstant.Country_Code, value: countryCode, dbType: DbType.String, direction: ParameterDirection.Input);
 
-                searchCompanyParameters.Add(name: SqlParameterConstant.User_Name, value: userName, dbType: DbType.String, direction: ParameterDirection.Input);
-                var companies = await databaseConnection.QueryAsync<SearchCompany>(SqlStoredProcedureConstant.COMPANY_SEARCH, searchCompanyParameters, commandType: CommandType.StoredProcedure);
-                return companies.ToList();
+                    searchCompanyParameters.Add(name: SqlParameterConstant.City_Name, value: cityName, dbType: DbType.String, direction: ParameterDirection.Input);
 
+                    searchCompanyParameters.Add(name: SqlParameterConstant.User_Name, value: userName, dbType: DbType.String, direction: ParameterDirection.Input);
+                    companies =(List<SearchCompany>)await databaseConnection.QueryAsync<SearchCompany>(SqlStoredProcedureConstant.COMPANY_SEARCH, searchCompanyParameters, commandType: CommandType.StoredProcedure);                  
+
+                }
             }
+            catch(Exception ex)
+            { }
+            return companies.ToList();
+
         }
     }
 }

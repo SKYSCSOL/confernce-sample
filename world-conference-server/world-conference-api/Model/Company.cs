@@ -9,10 +9,10 @@ namespace world_conference_api.Model
     {
         public int CompanyID { get; set; }
         public string Name { get; set; }
-        public int TheID { get; set; } //TODO: ENUM
+        public string TheID { get; set; } //TODO: ENUM
         public string Address { get; set; }
-        public string CityCode { get; set; }
-        public string CountryCode { get; set; }
+        public string City { get; set; }
+        public string Country { get; set; }
         public string Phone { get; set; }
         public string EmailId { get; set; }
         public string Website { get; set; }
@@ -21,6 +21,5 @@ namespace world_conference_api.Model
         public string Status { get; set; }
         public DateTime Created { get; set; }
         public DateTime? Modified { get; set; }
-
     }
 }

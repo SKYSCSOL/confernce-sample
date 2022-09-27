@@ -13,6 +13,7 @@ namespace world_conference_api.DataAccess
         public const string Country_Code = "@CountryCode";
         public const string City_Name = "@CityName";
         public const string User_Name = "@UserName";
+        public const string Company_Name = "@CompanyName";
 
     }
 }

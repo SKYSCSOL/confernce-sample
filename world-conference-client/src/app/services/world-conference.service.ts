@@ -53,4 +53,9 @@ export class WorldConferenceService {
         let parameters= '?countryCode='+countryCode+'&cityName='+cityName+'&userName='+userName;       
             return this.http.get(`${this.rootUrl}${this.conferenceAPIUrl.getAllCompaniesCount}` + parameters);
           }
+
+  getAllUserByCompanyName(companyName: string): Observable<any> {     
+    let parameters= '?companyName='+companyName;       
+    return this.http.get(`${this.rootUrl}${this.conferenceAPIUrl.getAllUserByCompanyName}` + parameters);
+    }
 }

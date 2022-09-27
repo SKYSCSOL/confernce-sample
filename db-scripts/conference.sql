@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [conference]    Script Date: 22-09-2022 17:13:31 ******/
+/****** Object:  Database [conference]    Script Date: 27-09-2022 18:54:15 ******/
 CREATE DATABASE [conference]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -82,7 +82,7 @@ ALTER DATABASE [conference] SET QUERY_STORE = OFF
 GO
 USE [conference]
 GO
-/****** Object:  Table [dbo].[City]    Script Date: 22-09-2022 17:13:33 ******/
+/****** Object:  Table [dbo].[City]    Script Date: 27-09-2022 18:54:20 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -98,7 +98,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Company]    Script Date: 22-09-2022 17:13:33 ******/
+/****** Object:  Table [dbo].[Company]    Script Date: 27-09-2022 18:54:20 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -124,7 +124,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Country]    Script Date: 22-09-2022 17:13:33 ******/
+/****** Object:  Table [dbo].[Country]    Script Date: 27-09-2022 18:54:20 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -140,7 +140,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[User]    Script Date: 22-09-2022 17:13:33 ******/
+/****** Object:  Table [dbo].[User]    Script Date: 27-09-2022 18:54:20 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -168,13 +168,27 @@ SET IDENTITY_INSERT [dbo].[City] ON
 GO
 INSERT [dbo].[City] ([Id], [CountryCode], [CityCode], [CityName]) VALUES (1, N'IN        ', N'BOM       ', N'Mumbai    ')
 GO
+INSERT [dbo].[City] ([Id], [CountryCode], [CityCode], [CityName]) VALUES (2, N'NP        ', N'KH        ', N'Kathmandu ')
+GO
+INSERT [dbo].[City] ([Id], [CountryCode], [CityCode], [CityName]) VALUES (3, N'IN        ', N'AH        ', N'Ahmednagar')
+GO
+INSERT [dbo].[City] ([Id], [CountryCode], [CityCode], [CityName]) VALUES (4, N'IN        ', N'NP        ', N'Nagpur    ')
+GO
 SET IDENTITY_INSERT [dbo].[City] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Company] ON 
 GO
-INSERT [dbo].[Company] ([CompanyID], [Name], [TheID], [Address], [City], [Country], [Phone], [EmailId], [Website], [HowComeToKnow], [Others], [Status], [Created], [Modified]) VALUES (1, N'WIN       ', N'3         ', N'Mumbai, India', N'BOM       ', N'IN        ', N'9323277214', N'bibhuti@winwebconnect.com', N'www.winwebconnect.com', N'Search Engine', NULL, N'New       ', CAST(N'2022-09-20T01:29:09.283' AS DateTime), NULL)
+INSERT [dbo].[Company] ([CompanyID], [Name], [TheID], [Address], [City], [Country], [Phone], [EmailId], [Website], [HowComeToKnow], [Others], [Status], [Created], [Modified]) VALUES (1, N'WIN1      ', N'3         ', N'Mumbai, India1', N'BOM       ', N'IN        ', N'9323277214', N'bibhuti@winwebconnect.com', N'www.winwebconnect.com', N'Search Engine', NULL, N'New       ', CAST(N'2022-09-20T01:29:09.283' AS DateTime), NULL)
 GO
-INSERT [dbo].[Company] ([CompanyID], [Name], [TheID], [Address], [City], [Country], [Phone], [EmailId], [Website], [HowComeToKnow], [Others], [Status], [Created], [Modified]) VALUES (2, N'WIN       ', N'2         ', N'Mumbai, India', N'BOM       ', N'IN        ', N'9323277212', N'company1@winwebconnect.com', N'www.comwinwebconnect.com', N'Search Engine', NULL, N'New       ', CAST(N'2022-09-20T01:29:09.283' AS DateTime), NULL)
+INSERT [dbo].[Company] ([CompanyID], [Name], [TheID], [Address], [City], [Country], [Phone], [EmailId], [Website], [HowComeToKnow], [Others], [Status], [Created], [Modified]) VALUES (2, N'WIN2      ', N'2         ', N'Mumbai, India2', N'BOM       ', N'IN        ', N'9323277212', N'company1@winwebconnect.com', N'www.comwinwebconnect.com', N'Search Engine', NULL, N'New       ', CAST(N'2022-09-20T01:29:09.283' AS DateTime), NULL)
+GO
+INSERT [dbo].[Company] ([CompanyID], [Name], [TheID], [Address], [City], [Country], [Phone], [EmailId], [Website], [HowComeToKnow], [Others], [Status], [Created], [Modified]) VALUES (3, N'WIN3      ', N'3         ', N'Mumbai, India3', N'BOM       ', N'IN        ', N'9323277214', N'bibhuti@winwebconnect.com', N'www.winwebconnect.com', N'Search Engine', NULL, N'New       ', CAST(N'2022-09-20T01:29:09.283' AS DateTime), NULL)
+GO
+INSERT [dbo].[Company] ([CompanyID], [Name], [TheID], [Address], [City], [Country], [Phone], [EmailId], [Website], [HowComeToKnow], [Others], [Status], [Created], [Modified]) VALUES (4, N'WIN4      ', N'2         ', N'Mumbai, India4', N'BOM       ', N'NP        ', N'9323277212', N'company1@winwebconnect.com', N'www.comwinwebconnect.com', N'Search Engine', NULL, N'New       ', CAST(N'2022-09-20T01:29:09.283' AS DateTime), NULL)
+GO
+INSERT [dbo].[Company] ([CompanyID], [Name], [TheID], [Address], [City], [Country], [Phone], [EmailId], [Website], [HowComeToKnow], [Others], [Status], [Created], [Modified]) VALUES (5, N'WIN5      ', N'3         ', N'Mumbai, India5', N'BOM       ', N'NP        ', N'9323277214', N'bibhuti@winwebconnect.com', N'www.winwebconnect.com', N'Search Engine', NULL, N'New       ', CAST(N'2022-09-20T01:29:09.283' AS DateTime), NULL)
+GO
+INSERT [dbo].[Company] ([CompanyID], [Name], [TheID], [Address], [City], [Country], [Phone], [EmailId], [Website], [HowComeToKnow], [Others], [Status], [Created], [Modified]) VALUES (6, N'WIN6      ', N'2         ', N'Mumbai, India6', N'BOM       ', N'NP        ', N'9323277212', N'company1@winwebconnect.com', N'www.comwinwebconnect.com', N'Search Engine', NULL, N'New       ', CAST(N'2022-09-20T01:29:09.283' AS DateTime), NULL)
 GO
 SET IDENTITY_INSERT [dbo].[Company] OFF
 GO
@@ -188,15 +202,23 @@ SET IDENTITY_INSERT [dbo].[Country] OFF
 GO
 SET IDENTITY_INSERT [dbo].[User] ON 
 GO
-INSERT [dbo].[User] ([UserID], [CompanyID], [LoginID], [Password], [Name], [Phone], [EmailId], [Role], [Status], [Created], [Modified], [Accessed]) VALUES (1, 1, N'bibhuti@winwebconnect.com', NULL, N'Bibhuti Bibhaker', N'9323277214', N'bibhuti@winwebconnect.com', N'SuperAdmin', N'Active    ', CAST(N'2022-09-20T01:31:16.093' AS DateTime), NULL, NULL)
+INSERT [dbo].[User] ([UserID], [CompanyID], [LoginID], [Password], [Name], [Phone], [EmailId], [Role], [Status], [Created], [Modified], [Accessed]) VALUES (1, 1, N'bibhuti@winwebconnect.com', NULL, N'Bibhuti Bibhaker1', N'9323277214', N'bibhuti@winwebconnect.com', N'SuperAdmin', N'Active    ', CAST(N'2022-09-20T01:31:16.093' AS DateTime), NULL, NULL)
 GO
-INSERT [dbo].[User] ([UserID], [CompanyID], [LoginID], [Password], [Name], [Phone], [EmailId], [Role], [Status], [Created], [Modified], [Accessed]) VALUES (2, 2, N'kumary@winwebconnect.com', NULL, N'Kumar Y', N'9323277214', N'bibhuti@winwebconnect.com', N'SuperAdmin', N'Active    ', CAST(N'2022-09-20T01:31:16.093' AS DateTime), NULL, NULL)
+INSERT [dbo].[User] ([UserID], [CompanyID], [LoginID], [Password], [Name], [Phone], [EmailId], [Role], [Status], [Created], [Modified], [Accessed]) VALUES (2, 1, N'kumary@winwebconnect.com', NULL, N'Kumar', N'9323277214', N'bibhuti@winwebconnect.com', N'SuperAdmin', N'Active    ', CAST(N'2022-09-20T01:31:16.093' AS DateTime), NULL, NULL)
+GO
+INSERT [dbo].[User] ([UserID], [CompanyID], [LoginID], [Password], [Name], [Phone], [EmailId], [Role], [Status], [Created], [Modified], [Accessed]) VALUES (3, 1, N'bibhuti@winwebconnect.com', NULL, N'Bibhuti Bibhaker2', N'9323277214', N'bibhuti@winwebconnect.com', N'SuperAdmin', N'Active    ', CAST(N'2022-09-20T01:31:16.093' AS DateTime), NULL, NULL)
+GO
+INSERT [dbo].[User] ([UserID], [CompanyID], [LoginID], [Password], [Name], [Phone], [EmailId], [Role], [Status], [Created], [Modified], [Accessed]) VALUES (4, 3, N'kumary@winwebconnect.com', NULL, N'Kumar Y2', N'9323277214', N'bibhuti@winwebconnect.com', N'SuperAdmin', N'Active    ', CAST(N'2022-09-20T01:31:16.093' AS DateTime), NULL, NULL)
+GO
+INSERT [dbo].[User] ([UserID], [CompanyID], [LoginID], [Password], [Name], [Phone], [EmailId], [Role], [Status], [Created], [Modified], [Accessed]) VALUES (5, 3, N'bibhuti@winwebconnect.com', NULL, N'Bibhuti Bibhaker3', N'9323277214', N'bibhuti@winwebconnect.com', N'SuperAdmin', N'Active    ', CAST(N'2022-09-20T01:31:16.093' AS DateTime), NULL, NULL)
+GO
+INSERT [dbo].[User] ([UserID], [CompanyID], [LoginID], [Password], [Name], [Phone], [EmailId], [Role], [Status], [Created], [Modified], [Accessed]) VALUES (6, 2, N'kumary@winwebconnect.com', NULL, N'Kumar Y3', N'9323277214', N'bibhuti@winwebconnect.com', N'SuperAdmin', N'Active    ', CAST(N'2022-09-20T01:31:16.093' AS DateTime), NULL, NULL)
 GO
 SET IDENTITY_INSERT [dbo].[User] OFF
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [UQ__City__B488218C253B3BE4]    Script Date: 22-09-2022 17:13:33 ******/
+/****** Object:  Index [UQ__City__B488218C253B3BE4]    Script Date: 27-09-2022 18:54:22 ******/
 ALTER TABLE [dbo].[City] ADD UNIQUE NONCLUSTERED 
 (
 	[CityCode] ASC
@@ -204,7 +226,7 @@ ALTER TABLE [dbo].[City] ADD UNIQUE NONCLUSTERED
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [UQ__Country__5D9B0D2CE900573A]    Script Date: 22-09-2022 17:13:33 ******/
+/****** Object:  Index [UQ__Country__5D9B0D2CE900573A]    Script Date: 27-09-2022 18:54:22 ******/
 ALTER TABLE [dbo].[Country] ADD UNIQUE NONCLUSTERED 
 (
 	[CountryCode] ASC
@@ -234,7 +256,7 @@ REFERENCES [dbo].[Company] ([CompanyID])
 GO
 ALTER TABLE [dbo].[User] CHECK CONSTRAINT [FK_User_Company]
 GO
-/****** Object:  StoredProcedure [dbo].[CompanySearch]    Script Date: 22-09-2022 17:13:33 ******/
+/****** Object:  StoredProcedure [dbo].[CompanySearch]    Script Date: 27-09-2022 18:54:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -244,7 +266,7 @@ GO
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
--- exec CompanySearch  1,2, null, 'IN', 'Mumbai', null
+-- exec CompanySearch  1,5, null, 'IN', 'Mumbai', null
 -- =============================================
 CREATE PROCEDURE [dbo].[CompanySearch]
 @PageNo INT = 0,  --@Page int,
@@ -270,16 +292,21 @@ BEGIN TRY
 
 WITH TempResult as
 (
-SELECT ROW_NUMBER() OVER(ORDER BY Company.CompanyID DESC) as RowNum,
-LTRIM(RTRIM([User].[Name])) AS UserName, LTRIM(RTRIM(Country.CountryCode)) AS CountryCode, LTRIM(RTRIM(City.CityName)) AS CityName, LTRIM(RTRIM([User].EmailId)) AS EmailId, LTRIM(RTRIM([User].UserID)) AS UserID, LTRIM(RTRIM([Company].[Name])) AS CompanyName
+SELECT  DISTINCT
+Company.CompanyID  as RowNum,
+LTRIM(RTRIM(Country.CountryCode)) AS CountryCode, LTRIM(RTRIM(City.CityName)) AS CityName, 
+LTRIM(RTRIM([Company].[Name])) AS CompanyName
 FROM            City INNER JOIN
                          Company ON City.CityCode = Company.City INNER JOIN
                          Country ON City.CountryCode = Country.CountryCode AND Company.Country = Country.CountryCode INNER JOIN
                          [User] ON Company.CompanyID = [User].CompanyID
+
       WHERE
              [City].[CountryCode] LIKE '%'+ ISNULL(@CountryCode, '') + '%'
               AND[City].[CityName] LIKE '%' + ISNULL(@CityName, '') + '%'
 			  AND [User].[Name] LIKE '%' + ISNULL(@UserName, '') + '%'
+			  group by Company.CompanyID,[Company].[Name],[User].[Name],Country.CountryCode,City.CityName,
+						 [User].EmailId,[User].UserID
 )
 
 SELECT top (@LastRec-1) *
@@ -297,7 +324,7 @@ SET NOCOUNT OFF
     RETURN 0
   END
 GO
-/****** Object:  StoredProcedure [dbo].[GetCompaniesCount]    Script Date: 22-09-2022 17:13:33 ******/
+/****** Object:  StoredProcedure [dbo].[GetCompaniesCount]    Script Date: 27-09-2022 18:54:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -316,15 +343,47 @@ BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
-	SELECT COUNT(Company.CompanyID) CompaniesCount
+	SELECT COUNT(DISTINCT Company.[Name]) AS CompaniesCount
 	FROM            City INNER JOIN
 							 Company ON City.CityCode = Company.City INNER JOIN
 							 Country ON City.CountryCode = Country.CountryCode AND Company.Country = Country.CountryCode INNER JOIN
-							 [User] ON Company.CompanyID = [User].CompanyID
+							 [User] ON Company.CompanyID = [User].CompanyID							
 		  WHERE
 				 [City].[CountryCode] LIKE '%'+ ISNULL(@CountryCode, '') + '%'
 				  AND[City].[CityName] LIKE '%' + ISNULL(@CityName, '') + '%'
 				  AND [User].[Name] LIKE '%' + ISNULL(@UserName, '') + '%'
+END
+GO
+/****** Object:  StoredProcedure [dbo].[GetUserByCompany]    Script Date: 27-09-2022 18:54:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- GetUserByCompany 'WIN1'
+-- =============================================
+CREATE PROCEDURE [dbo].[GetUserByCompany]
+	@CompanyName NVARCHAR(50),
+	@UserName NVARCHAR(1000) = ''
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+(SELECT [User].*
+FROM            City INNER JOIN
+                         Company ON City.CityCode = Company.City INNER JOIN
+                         Country ON City.CountryCode = Country.CountryCode AND Company.Country = Country.CountryCode INNER JOIN
+                         [User] ON Company.CompanyID = [User].CompanyID
+
+      WHERE [Company].[Name] LIKE '%' + ISNULL(@CompanyName, '') + '%'
+	  AND [User].[Name] LIKE '%' + ISNULL(@UserName, '') + '%'
+			 
+)
 END
 GO
 USE [master]
